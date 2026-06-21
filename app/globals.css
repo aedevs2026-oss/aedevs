@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* =========================================================
+   AEDEVS — Design Tokens
+   Palette derived from the AEDEVS mark: sky-to-signal-blue
+   triangle dissolving from pixels, paired with an emerald
+   "D" and deep navy bars.
+========================================================= */
+:root {
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", "Space Grotesk", sans-serif;
+
+  --bg-void: #060a14;
+  --bg-panel: #0a1424;
+  --bg-panel-2: #0e1b30;
+  --bg-panel-soft: #101f38;
+
+  --navy-deep: #0a1b33;
+
+  --brand-blue: #2e7df6;
+  --brand-blue-soft: #5ba8ff;
+  --brand-teal: #1ad8ae;
+  --brand-teal-deep: #0ea88a;
+
+  --ink-50: #f3f7fd;
+  --ink-200: #d4dfee;
+  --ink-300: #b7c4d9;
+  --ink-500: #7c8da9;
+  --ink-700: #4b5a73;
+
+  --border-glass: rgba(180, 200, 230, 0.12);
+  --border-glass-strong: rgba(180, 200, 230, 0.22);
+
+  --gradient-brand: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-teal) 100%);
+  --gradient-brand-soft: linear-gradient(135deg, rgba(46, 125, 246, 0.18), rgba(26, 216, 174, 0.18));
+
+  --shadow-glow-blue: 0 0 60px -10px rgba(46, 125, 246, 0.45);
+  --shadow-glow-teal: 0 0 60px -10px rgba(26, 216, 174, 0.4);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-void);
+  color: var(--ink-200);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--brand-teal);
+  color: var(--bg-void);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-panel-soft);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-blue);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+/* Visible focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   Typography
+========================================================= */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-gradient-brand {
+  background-image: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.heading-eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--brand-teal);
+}
+
+/* =========================================================
+   Glass surfaces
+========================================================= */
+.glass {
+  background: linear-gradient(180deg, rgba(20, 32, 54, 0.55), rgba(10, 18, 32, 0.45));
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.glass-strong {
+  background: linear-gradient(180deg, rgba(20, 32, 54, 0.78), rgba(8, 14, 26, 0.78));
+  border: 1px solid var(--border-glass-strong);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.glass-nav {
+  background: rgba(6, 10, 20, 0.62);
+  border-bottom: 1px solid var(--border-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* =========================================================
+   Buttons
+========================================================= */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  border-radius: 9999px;
+  padding: 0.85rem 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+  white-space: nowrap;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  position: relative;
+  color: #04101f;
+  background-image: var(--gradient-brand);
+  overflow: hidden;
+  box-shadow: 0 10px 30px -8px rgba(46, 125, 246, 0.5);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.55) 48%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--ease-out-expo);
+}
+.btn-primary:hover::before {
+  transform: translateX(120%);
+}
+.btn-primary:hover {
+  box-shadow: 0 14px 38px -6px rgba(26, 216, 174, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  color: var(--ink-50);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass-strong);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--brand-teal);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-icon {
+  color: var(--ink-300);
+  border: 1px solid var(--border-glass);
+  border-radius: 9999px;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.btn-ghost-icon:hover {
+  color: var(--bg-void);
+  background: var(--brand-teal);
+  border-color: var(--brand-teal);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   Badges / chips
+========================================================= */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-200);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 0.32rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(46, 125, 246, 0.1);
+  border: 1px solid rgba(91, 168, 255, 0.25);
+  color: var(--ink-200);
+  transition: all 0.3s ease;
+}
+.chip:hover {
+  background: rgba(26, 216, 174, 0.14);
+  border-color: var(--brand-teal);
+  color: var(--ink-50);
+}
+
+/* =========================================================
+   Cards
+========================================================= */
+.card-lift {
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-glass-strong);
+  box-shadow: 0 30px 60px -25px rgba(46, 125, 246, 0.35);
+}
+
+.card-glow-edge {
+  position: relative;
+}
+.card-glow-edge::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--gradient-brand);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  filter: blur(14px);
+}
+.card-glow-edge:hover::after {
+  opacity: 0.55;
+}
+
+/* =========================================================
+   Section reveal (scroll-triggered)
+========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =========================================================
+   Pixel dissolve — signature element
+   Echoes the AEDEVS mark's dissolving pixel motif.
+========================================================= */
+.pixel-dissolve {
+  position: relative;
+  display: inline-block;
+}
+.pixel-dissolve-text {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(16px);
+  transition: opacity 0.9s var(--ease-out-expo), filter 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+.pixel-dissolve.is-visible .pixel-dissolve-text {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+.pixel-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pixel-grid span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  background: var(--gradient-brand);
+  top: var(--py);
+  left: var(--px);
+  opacity: 0.95;
+  transform: translate(var(--ox), var(--oy)) scale(1) rotate(8deg);
+  transition: transform 0.85s var(--ease-out-expo), opacity 0.6s ease;
+  transition-delay: var(--pd);
+}
+.pixel-dissolve.is-visible .pixel-grid span {
+  transform: translate(0, 0) scale(0) rotate(0deg);
+  opacity: 0;
+}
+
+/* =========================================================
+   Mesh gradient backgrounds
+========================================================= */
+.mesh-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: drift 22s ease-in-out infinite;
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 6%) scale(1.08); }
+  66% { transform: translate(-5%, -4%) scale(0.95); }
+}
+
+/* =========================================================
+   Particles
+========================================================= */
+.particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--brand-blue-soft);
+  opacity: 0.5;
+  animation: floaty linear infinite;
+}
+@keyframes floaty {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-120vh) translateX(20px); opacity: 0; }
+}
+
+/* =========================================================
+   Floating 3D shapes (hero)
+========================================================= */
+.shape-3d {
+  position: absolute;
+  border-radius: 28%;
+  background: linear-gradient(135deg, rgba(46, 125, 246, 0.5), rgba(26, 216, 174, 0.25));
+  border: 1px solid rgba(180, 210, 255, 0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 30px 60px -20px rgba(46, 125, 246, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.06);
+  animation: float-shape 9s ease-in-out infinite;
+  transition: transform 0.2s ease-out;
+}
+@keyframes float-shape {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-22px) rotate(calc(var(--rot, 0deg) + 6deg)); }
+}
+
+/* =========================================================
+   Animated counters / stat cards
+========================================================= */
+.stat-card {
+  position: relative;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  background-image: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   Timeline (process)
+========================================================= */
+.timeline-line {
+  background: linear-gradient(180deg, var(--brand-blue), var(--brand-teal));
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.1s var(--ease-out-expo);
+}
+.timeline-line.is-visible {
+  transform: scaleY(1);
+}
+.timeline-dot {
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+/* =========================================================
+   Form inputs
+========================================================= */
+.form-field {
+  position: relative;
+}
+.form-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.85rem;
+  padding: 0.95rem 1rem;
+  color: var(--ink-50);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input::placeholder {
+  color: var(--ink-700);
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--brand-teal);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(26, 216, 174, 0.12);
+}
+
+/* =========================================================
+   Misc utilities
+========================================================= */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glass-strong), transparent);
+}
+
+.bg-noise {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(120, 160, 220, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 220, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.browser-mock {
+  border: 1px solid var(--border-glass-strong);
+  background: var(--bg-panel-2);
+}
+
+.section-pad {
+  padding-top: clamp(4.5rem, 9vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 9vw, 7.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
