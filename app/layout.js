@@ -1,54 +1,46 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { FloatingActions } from "@/components/FloatingActions";
+import { JsonLd } from "@/components/JsonLd";
+import { siteConfig } from "@/lib/content";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
-  metadataBase: new URL("https://aedevs.vercel.app"), // Replace with your domain
-
+  metadataBase: new URL(siteConfig.domain),
   title: {
-    default: "AEDEVS | Web Development, Mobile Apps & Digital Solutions",
-    template: "%s | AEDEVS",
+    default: `${siteConfig.name} | Premium software agency`,
+    template: `%s | ${siteConfig.name}`,
   },
-
-  description:
-    "AEDEVS is a professional web and mobile app development company specializing in business websites, e-commerce websites, school ERP systems, hospital websites, portfolio websites, custom web applications, WhatsApp Business automation, and mobile app development.",
-
+  description: siteConfig.description,
   keywords: [
     "AEDEVS",
-    "Web Development",
-    "Website Development",
-    "Mobile App Development",
-    "Business Website",
-    "School Website",
-    "Hospital Website",
-    "Ecommerce Website",
-    "Custom Software Development",
-    "WhatsApp Business Automation",
-    "SEO Services",
-    "UI UX Design",
-    "React",
-    "Next.js",
-    "Tamil Nadu",
-    "India",
+    "software agency",
+    "web development Chennai",
+    "mobile app development",
+    "ecommerce",
+    "Next.js agency",
+    "AI chatbot development",
   ],
-
-  authors: [{ name: "AEDEVS" }],
-  creator: "AEDEVS",
-  publisher: "AEDEVS",
-
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -57,48 +49,35 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://aedevs.vercel.app",
-    siteName: "AEDEVS",
-    title: "AEDEVS | Web Development, Mobile Apps & Digital Solutions",
-    description:
-      "Affordable and professional websites, mobile apps, e-commerce solutions, school ERP, hospital websites, WhatsApp automation, and custom software development.",
-    images: [
-      {
-        url: "/logo.png", // Place in public folder
-        width: 1200,
-        height: 630,
-        alt: "AEDEVS",
-      },
-    ],
+    url: siteConfig.domain,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | Premium software agency`,
+    description: siteConfig.description,
+    images: [{ url: "/logo.png", width: 1200, height: 630, alt: siteConfig.name }],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "AEDEVS | Web Development & Mobile App Development",
-    description:
-      "Professional websites, e-commerce, mobile apps, WhatsApp automation, and custom software solutions.",
-    images: ["/og-image.png"],
+    title: `${siteConfig.name} | Premium software agency`,
+    description: siteConfig.description,
+    images: ["/logo.png"],
   },
-
   alternates: {
-    canonical: "https://aedevs.vercel.app",
+    canonical: siteConfig.domain,
   },
-
   category: "Technology",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${manrope.variable} ${inter.variable} h-full`}>
+      <body className="min-h-full flex flex-col font-body antialiased">
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

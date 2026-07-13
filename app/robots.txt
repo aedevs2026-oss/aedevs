@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aedevs.vercel.app/sitemap.xml
