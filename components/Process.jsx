@@ -5,7 +5,7 @@ export function Process() {
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       {processSteps.map((step, index) => (
         <article key={step.step} className="card card-lift relative p-6">
-          <span className="font-display text-4xl font-bold text-gradient opacity-30">
+          <span className="font-display text-4xl font-bold text-gradient opacity-80">
             {step.step}
           </span>
           <h3 className="mt-2 text-lg font-bold text-slate-900">{step.title}</h3>

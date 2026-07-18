@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
+Host: https://aedevs.vercel.app
 Sitemap: https://aedevs.vercel.app/sitemap.xml

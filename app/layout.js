@@ -3,7 +3,7 @@ import "./globals.css";
 import { FloatingActions } from "@/components/FloatingActions";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/lib/content";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { localBusinessJsonLd, organizationJsonLd, serviceJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -27,12 +27,18 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "AEDEVS",
-    "software agency",
-    "web development Chennai",
-    "mobile app development",
-    "ecommerce",
-    "Next.js agency",
+    "AE DEVS",
+    "best web development company in Dharmapuri",
+    "website development company in Dharmapuri",
+    "software company in Dharmapuri",
+    "web design company in Dharmapuri",
+    "custom website development Dharmapuri",
+    "ecommerce website development Dharmapuri",
+    "Next.js development company",
+    "React development company",
+    "WordPress development company",
+    "SEO company in Dharmapuri",
+    "mobile app development company",
     "AI chatbot development",
   ],
   authors: [{ name: siteConfig.name }],
@@ -67,6 +73,11 @@ export const metadata = {
   alternates: {
     canonical: siteConfig.domain,
   },
+  icons: {
+    icon: "/favicon.ico.png",
+    shortcut: "/favicon.ico.png",
+    apple: "/logo.png",
+  },
   category: "Technology",
 };
 
@@ -76,6 +87,8 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col font-body antialiased">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
+        <JsonLd data={localBusinessJsonLd()} />
+        <JsonLd data={serviceJsonLd()} />
         {children}
         <FloatingActions />
       </body>
