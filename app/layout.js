@@ -84,6 +84,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable} h-full`}>
+      <head>
+        <meta name="google-site-verification" content="EThwzTF2bhbmpwBeLvwCcSCjG_QTvDYtYuFV8C5gKOE" />
+      </head>
       <body className="min-h-full flex flex-col font-body antialiased">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
