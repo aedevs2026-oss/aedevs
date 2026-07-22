@@ -50,7 +50,7 @@ export default function BannerSlider() {
       {/* Left Button */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 lg:left-5 top-1/2 -translate-y-1/2 z-20 rounded-full bg-gray-100/90 p-2 sm:p-3 shadow-lg transition hover:bg-white hover:scale-110"
+        className="hidden md:flex absolute left-5 top-1/2 -translate-y-1/2 z-20 items-center justify-center rounded-full bg-gray-100/90 p-3 shadow-lg transition hover:bg-white hover:scale-110"
       >
         <ChevronLeft
           size={20}
@@ -61,7 +61,7 @@ export default function BannerSlider() {
       {/* Right Button */}
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 lg:right-5 top-1/2 -translate-y-1/2 z-20 rounded-full bg-gray-100/90 p-2 sm:p-3 shadow-lg transition hover:bg-white hover:scale-110"
+        className="hidden md:flex absolute right-5 top-1/2 -translate-y-1/2 z-20 items-center justify-center rounded-full bg-gray-100/90 p-3 shadow-lg transition hover:bg-white hover:scale-110"
       >
         <ChevronRight
           size={20}
