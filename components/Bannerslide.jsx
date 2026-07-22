@@ -32,7 +32,7 @@ export default function BannerSlider() {
   }, [current]);
 
   return (
-    <div className="relative h-[38vh] min-h-[250px] max-h-[350px] md:h-[450px] lg:h-[700px] w-full overflow-hidden rounded-2xl lg:rounded-[30px] shadow-2xl">
+    <div className="relative aspect-[16/9] lg:h-[700px] w-full overflow-hidden rounded-2xl lg:rounded-[30px] shadow-2xl">
       {/* Images */}
       {banners.map((banner, index) => (
         <Image
