@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { services, siteConfig, teamMembers } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
+import  BannerSlider from "@/components/Bannerslide";
 
 export const metadata = createPageMetadata({
   title: "Best Web Development Company in Dharmapuri | AE DEVS",
@@ -32,6 +33,7 @@ export default function HomePage() {
   return (
     <div className="page-shell">
       <SiteHeader />
+      <BannerSlider />
       <main id="main-content" tabIndex={-1}>
         <section className="relative overflow-hidden border-b border-slate-200/70">
           <div className="pointer-events-none absolute inset-0" style={{ background: "var(--gradient-hero)" }} aria-hidden />
@@ -47,7 +49,7 @@ export default function HomePage() {
                   Custom websites and software that help businesses grow in Dharmapuri and beyond.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                  AE DEVS builds premium websites, ecommerce stores, LMS and ERP systems, mobile apps, SEO campaigns, and AI-powered solutions for companies across Dharmapuri, Salem, Krishnagiri, Hosur, Harur, and Tamil Nadu.
+                  AEDEVS builds premium websites, ecommerce stores, LMS and ERP systems, mobile apps, SEO campaigns, and AI-powered solutions for companies across Dharmapuri, Salem, Krishnagiri, Hosur, Harur, and Tamil Nadu.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button href="/contact">Book a free consultation</Button>
